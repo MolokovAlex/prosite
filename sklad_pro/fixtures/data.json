@@ -1,0 +1,99 @@
+[
+  {
+    "model": "sklad_pro.dbg",
+    "pk": 1,
+    "fields": {
+      "id_dbg": 1,
+      "name": "Основной склад",
+      "nameFull": "__",
+      "name2": "__",
+      "id_parent": null,
+      "is_active": true
+    }
+  },
+{
+    "model": "sklad_pro.dbg",
+    "pk": 2,
+    "fields": {
+      "id_dbg": 2,
+      "name": "Готовые изделия",
+      "nameFull": "__",
+      "name2": "__",
+      "id_parent": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "sklad_pro.dbg",
+    "pk": 3,
+    "fields": {
+      "id_dbg": 3,
+      "name": "СБЕ",
+      "nameFull": "Сборочные Единицы",
+      "name2": "__",
+      "id_parent": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "sklad_pro.dbg",
+    "pk": 4,
+    "fields": {
+      "id_dbg": 4,
+      "name": "Полуфабрикаты",
+      "nameFull": "__",
+      "name2": "__",
+      "id_parent": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "sklad_pro.dbg",
+    "pk": 5,
+    "fields": {
+      "id_dbg": 5,
+      "name": "Материалы",
+      "nameFull": "Расходные материалы",
+      "name2": "__",
+      "id_parent": 1,
+      "is_active": true
+    }
+  },
+
+  {
+    "model": "sklad_pro.dbg",
+    "pk": 7,
+    "fields": {
+      "id_dbg": 7,
+      "name": "Ш5",
+      "nameFull": "Шорох-5Л",
+      "name2": "__",
+      "id_parent": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "sklad_pro.dbg",
+    "pk": 8,
+    "fields": {
+      "id_dbg": 8,
+      "name": "Ш3",
+      "nameFull": "Шорох-3",
+      "name2": "__",
+      "id_parent": 2,
+      "is_active": true
+    }
+  },
+  {
+    "model": "sklad_pro.dbg",
+    "pk": 9,
+    "fields": {
+      "id_dbg": 9,
+      "name": "СПДУ-1",
+      "nameFull": "__",
+      "name2": "__",
+      "id_parent": 2,
+      "is_active": true
+    }
+  }
+]
