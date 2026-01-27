@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_tree.css' %}">
+    <title> 
+        {% block title %} 
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo"><a href="">Site<span class="black">DMP</span><span class="gray">.рф</span></a><p>Lorem ipsum dolor sit amet</p></div>
+                <ul class="nav">
+                    {% block LinksUpMenu %} 
+                    {% endblock %}
+                </ul>
+            </div>
+        <div class="content">
+            <div class="rightCol">
+                <ul class="rightNav">
+                    {% block LinksRightNavigator %}
+                    {% endblock %}
+                </ul>
+                <div class="block">
+                    {% block RightColumnBlock%}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="main">
+                <h1>What we do</h1>
+                <p>Lorem ipsum dolor sit amet, <a href="#" title="link">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in <b title="bold">reprehenderit in voluptate velit</b> esse cillum dolore eu fugiat nulla pariatur. <i title="italic">Excepteur sint occaecat</i> cupidatat non proident, sunt in culpa qui officia deserunt.</p>
+
+
+                <!--Таблица-->
+                {% block table %}
+                {% endblock %}
+                {% block form1 %}
+                {% endblock %}
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

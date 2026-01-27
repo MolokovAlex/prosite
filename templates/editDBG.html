@@ -1,0 +1,21 @@
+
+<html> 
+<body>
+
+<H1> ПрО - Создание/Редактирование групп/подгрупп </h1>
+<li><a href="{% url 'first_page' %}" class="active">Home</a></li>
+    
+<h2>Редактирование ед.измерения</h2>					
+
+
+    <form method="post"> 
+        {% csrf_token %}
+        <p>Name:<br> <input name="name" /></p>
+        <p>Age:<br> <input name="age" type="number" /></p>
+        <input type="submit" value="Send" />
+    </form>
+
+<h2>Name: {{name}}  Age: {{age}}</h2>
+
+</body>
+</html>   

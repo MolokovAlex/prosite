@@ -1,0 +1,51 @@
+
+{% comment %} {% extends 'base.html' %}
+
+{% block title %} 
+{{ title }} 
+{% endblock %}
+
+
+{% block LinksUpMenu %}
+<li><a href="{% url 'first_page' %}" class="active">Home</a></li>
+<li><a href="{% url 'sklad_page' %}">Склад</a></li>
+<li><a href="{% url 'specification_page' %}">Спецификации</a></li>
+<li><a href="{% url 'first_page' %}">КД</a></li> 
+<!-- <li><a href="#">News</a></li>
+<li><a href="#">Contacts</a></li> -->
+{% endblock %} 
+{% endcomment %}
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style_tree.css' %}">
+    <title> 
+        {% block title %} 
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+
+<H1> ПрО - главная страница
+    
+</h1>
+<li><a href="{% url 'first_page' %}" class="active">Home</a></li>
+<li><a href="{% url 'edit_DBG' %} "> Создание/Редактирование групп/подгрупп</a></li>
+
+
+
+{% comment %} <li><a href="{% url 'edit_DBU' %} "> Редактирование DBU</a></li>
+<li><a href="{% url 'edit_DBGC' %} "> Редактирование DBGC</a></li>
+<li><a href="{% url 'income' %}">Приход компонентов</a></li>
+<li><a href="{% url 'expenditure' %}">Расход компонентов</a></li>     {% endcomment %}
+    
+
+
+
+</body>
+</html>   
