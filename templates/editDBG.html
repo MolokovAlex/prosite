@@ -1,21 +1,97 @@
 
 <html> 
+
+    <head>
+        <meta charset="utf-8">
+        <style>
+            td{
+                width: 60px; 
+                height:60px; 
+                border: solid 1px silver; 
+                text-align:center;
+            }
+            th{
+                width: 60px; 
+                height:60px; 
+                border: solid 1px silver; 
+                text-align:center;
+            }
+        </style>
+    </head>
+
+
 <body>
 
 <H1> ПрО - Создание/Редактирование групп/подгрупп </h1>
 <li><a href="{% url 'first_page' %}" class="active">Home</a></li>
     
-<h2>Редактирование ед.измерения</h2>					
-
-
-    <form method="post"> 
+<form method="post"> 
+    {% csrf_token %}		
+    <table class="bordered">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Наименование группы</th>
+                <th>Полное наименование группы</th>
+                <th>Наименование группы вар2</th>
+                <th>Родительская группа</th>
+                <th>Активность</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in dbcAll %}
+            <tr> 
+                <td>{{ item.id_dbg          }} </td>
+                <td>{{ item.name            }} </td>
+                <td>{{ item.nameFull        }} </td>
+                <td>{{ item.name2           }} </td>
+                <td>{{ item.id_parent       }} </td>
+                <td>{{ item.is_active       }} </td>
+                <td><input type="radio" value="man" name="table_dbg"/> </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit">Отправить</button>
+</form>
+<form method="post"> 
+    {% csrf_token %}
+    <table class="bordered">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Наименование группы</th>
+                    <th>Полное наименование группы</th>
+                    <th>Наименование группы вар2</th>
+                    <th>Родительская группа</th>
+                    <th>Активность</th>
+                    {% comment %} <th>Действие</th> {% endcomment %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr> 
+                    <td>{{ i.id_dbg      }} </td>
+                    <td><input type="text" name="name" value= {{ i.name        }} /> </td>
+                    <td><input type="text" name="login" value= {{ i.nameFull    }} /> </td>
+                    <td><input type="text" name="login" value= {{ i.name2       }} /> </td>
+                    <td><input type="text" name="login" value= {{ i.id_parent   }} /> </td>
+                    <td><input type="text" name="login" value= {{ i.is_active   }} /> </td>
+                    {% comment %} <td><input type="radio" value="man" name="table_dbg"/> </td> {% endcomment %}
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" >Редактированть </button>
+</form>
+<h2> {{ name}} </h2>
+    {% comment %} <form method="post"> 
         {% csrf_token %}
         <p>Name:<br> <input name="name" /></p>
         <p>Age:<br> <input name="age" type="number" /></p>
         <input type="submit" value="Send" />
     </form>
 
-<h2>Name: {{name}}  Age: {{age}}</h2>
+<h2>Name: {{name}}  Age: {{age}}</h2> {% endcomment %}
 
 </body>
 </html>   
