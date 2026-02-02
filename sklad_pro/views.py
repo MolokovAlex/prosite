@@ -25,7 +25,7 @@ def index(request):
 def edit_DBG(request):
     if request.method == 'POST': # если отправили данные с формы сюда, в backend
         # name = request.POST.get("name", "Undefined")
-        idGroup = request.POST.get("id_dbg", 3)
+        idGroup = request.POST.get("table_dbg", 3)
         itemGroup = DBG.objects.get(id=idGroup)
     else:       #  GET получаем форму на монитор
         itemGroup = None
