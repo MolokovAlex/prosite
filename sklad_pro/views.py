@@ -23,21 +23,18 @@ def index(request):
 
 
 def edit_DBG(request):
-    name = request.POST.get("name", "Undefined")
-    # получаем из данных запроса POST отправленные через форму данные
-    # name = request.POST.get("name", "Undefined")
-    # age = request.POST.get("age", 1)
-    # data = {
-    #     'name': name,
-    #     'age': age,
-    #     }
-    # return render(request, 'editDBG.html', context=data)
+    if request.method == 'POST': # если отправили данные с формы сюда, в backend
+        # name = request.POST.get("name", "Undefined")
+        idGroup = request.POST.get("id_dbg", 3)
+        itemGroup = DBG.objects.get(id=idGroup)
+    else:       #  GET получаем форму на монитор
+        itemGroup = None
+
     dbcAll = DBG.objects.all()
-    i = DBG.objects.get(id=2)
     data_in_template_editDBG= {
         'dbcAll': dbcAll,
-        'i':i,
-        'name': name,
+        'itemGroup':itemGroup,
+        # 'name': name,
         'title': 'Список групп',
     }
     return render(request, 'editDBG.html', data_in_template_editDBG)

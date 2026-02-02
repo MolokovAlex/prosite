@@ -48,12 +48,13 @@
                 <td>{{ item.name2           }} </td>
                 <td>{{ item.id_parent       }} </td>
                 <td>{{ item.is_active       }} </td>
-                <td><input type="radio" value="man" name="table_dbg"/> </td>
+                {% comment %} <td><input type="radio" value="man" name="table_dbg"/> </td> {% endcomment %}
+                <td><input type="radio" value={{item.id_dbg}} name="table_dbg"/> </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <button type="submit">Отправить</button>
+    <button type="submit">Изменить выбранную группу</button>
 </form>
 <form method="post"> 
     {% csrf_token %}
@@ -71,17 +72,19 @@
             </thead>
             <tbody>
                 <tr> 
-                    <td>{{ i.id_dbg      }} </td>
-                    <td><input type="text" name="name" value= {{ i.name        }} /> </td>
-                    <td><input type="text" name="login" value= {{ i.nameFull    }} /> </td>
-                    <td><input type="text" name="login" value= {{ i.name2       }} /> </td>
-                    <td><input type="text" name="login" value= {{ i.id_parent   }} /> </td>
-                    <td><input type="text" name="login" value= {{ i.is_active   }} /> </td>
+                    <td>{{ itemGroup.id_dbg      }} </td>
+                    <td><input type="text" name="name" value= {{ itemGroup.name        }} /> </td>
+                    <td><input type="text" name="login" value= {{ itemGroup.nameFull    }} /> </td>
+                    <td><input type="text" name="login" value= {{ itemGroup.name2       }} /> </td>
+                    <td><input type="text" name="login" value= {{ itemGroup.id_parent   }} /> </td>
+                    <td><input type="text" name="login" value= {{ itemGroup.is_active   }} /> </td>
                     {% comment %} <td><input type="radio" value="man" name="table_dbg"/> </td> {% endcomment %}
                 </tr>
             </tbody>
         </table>
-        <button type="submit" >Редактированть </button>
+        <button type="submit" >Добавить Новая группа </button>
+        <button type="submit" >Редактировать </button>
+        <button type="submit" >Удалить </button>
 </form>
 <h2> {{ name}} </h2>
     {% comment %} <form method="post"> 
