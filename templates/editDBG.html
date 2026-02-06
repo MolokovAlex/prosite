@@ -30,6 +30,7 @@
     <table class="bordered">
         <thead>
             <tr>
+                <th>pk</th>
                 <th>id</th>
                 <th>Наименование группы</th>
                 <th>Полное наименование группы</th>
@@ -37,11 +38,14 @@
                 <th>Родительская группа</th>
                 <th>Активность</th>
                 <th>Действие</th>
+                <th>Действие</th>
+                <th>Действие</th>
             </tr>
         </thead>
         <tbody>
             {% for item in dbcAll %}
             <tr> 
+                <td>{{ item.pk          }} </td>
                 <td>{{ item.id_dbg          }} </td>
                 <td>{{ item.name            }} </td>
                 <td>{{ item.nameFull        }} </td>
@@ -49,7 +53,9 @@
                 <td>{{ item.id_parent       }} </td>
                 <td>{{ item.is_active       }} </td>
                 {% comment %} <td><input type="radio" value="man" name="table_dbg"/> </td> {% endcomment %}
-                <td><input type="radio" value={{item.id_dbg}} name="table_dbg"/> </td>
+                <td><input type="radio" value={{item.pk}} name="radioSwitch"/> </td>
+                <td><button type="submit" name="buttonSave" value=8 >Записать </button> </td>
+                <td><button type="submit" name="buttonDelete" value=8 >Удалить </button> </td>
             </tr>
             {% endfor %}
         </tbody>
@@ -61,6 +67,7 @@
     <table class="bordered">
             <thead>
                 <tr>
+                    <th>pk</th>
                     <th>id</th>
                     <th>Наименование группы</th>
                     <th>Полное наименование группы</th>
@@ -72,19 +79,20 @@
             </thead>
             <tbody>
                 <tr> 
+                    <td>{{ itemGroup.pk      }} </td>
                     <td>{{ itemGroup.id_dbg      }} </td>
-                    <td><input type="text" name="name" value= {{ itemGroup.name        }} /> </td>
-                    <td><input type="text" name="login" value= {{ itemGroup.nameFull    }} /> </td>
-                    <td><input type="text" name="login" value= {{ itemGroup.name2       }} /> </td>
-                    <td><input type="text" name="login" value= {{ itemGroup.id_parent   }} /> </td>
-                    <td><input type="text" name="login" value= {{ itemGroup.is_active   }} /> </td>
+                    <td><input type="text" name="itemName" value= {{ itemGroup.name        }} > </td>
+                    <td><input type="text" name="itemNameFull" value= {{ itemGroup.nameFull    }} > </td>
+                    <td><input type="text" name="itemName2" value= {{ itemGroup.name2       }} > </td>
+                    <td><input type="text" name="itemParentId" value= {{ itemGroup.id_parent   }} > </td>
+                    <td><input type="text" name="itemIsActive" value= {{ itemGroup.is_active   }} > </td>
                     {% comment %} <td><input type="radio" value="man" name="table_dbg"/> </td> {% endcomment %}
                 </tr>
             </tbody>
         </table>
-        <button type="submit" >Добавить Новая группа + Записать </button>
-        <button type="submit" >Записать </button>
-        <button type="submit" >Удалить </button>
+        <button type="submit" name="buttonCreate" value=8>Добавить Новая группа + Записать </button>
+        <button type="submit" name="buttonSave" value=8 >Записать </button>
+        <button type="submit" name="buttonDelete" value=8 >Удалить </button>
 </form>
 <h2> {{ name}} </h2>
     {% comment %} <form method="post"> 
