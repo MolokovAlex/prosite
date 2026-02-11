@@ -30,9 +30,16 @@ def edit_DBG(request):
             pkGroup = request.POST.get("radioSwitch", 3)    # какой радио-переключатель был выбран ?
             itemGroup = DBG.objects.get(id=pkGroup)         # считаем этот элемент таблицы
         if request.POST.get("buttonDelete"):
-            pkItem = request.POST.get("itemPk")    # какой радио-переключатель был выбран ?
-            itemDelGroup = DBG.objects.get(id=pkItem)         # считаем этот элемент таблицы
+            pkGroup = request.POST.get("buttonDelete")      # какакя кнопка Удалить нажата, на каком элементе?
+            itemDelGroup = DBG.objects.get(id=pkGroup)         # считаем этот элемент таблицы
             itemDelGroup.delete()
+        if request.POST.get("buttonOnEdit"):
+                FLAG_EDIT_STRING = True
+                pkGroup = request.POST.get("buttonOnEdit")
+        if request.POST.get("buttonOffEdit"):
+                FLAG_EDIT_STRING = False
+                pkGroup = request.POST.get("buttonOffEdit")
+        
         if request.POST.get("buttonCreate"):
             itemDBG = DBG()
             # itemDBG.pk = int(request.POST.get("itemPk", 99999))  
@@ -45,13 +52,16 @@ def edit_DBG(request):
             itemDBG.id_dbg = itemDBG.pk
             itemDBG.save() 
     else:       #  GET получаем форму на монитор
-        pass
+        FLAG_EDIT_STRING = False
+        pkGroup = 0
 
     dbcAll = DBG.objects.all()
     data_in_template_editDBG= {
         'dbcAll': dbcAll,
         'itemGroup':itemGroup,
         # 'name': name,
+        'flag_edit': FLAG_EDIT_STRING,
+        'pk_group':int(pkGroup),
         'title': 'Список групп',
     }
     return render(request, 'editDBG.html', data_in_template_editDBG)

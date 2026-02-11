@@ -30,13 +30,13 @@
     <table class="bordered">
         <thead>
             <tr>
-                <th>pk</th>
-                <th>id</th>
-                <th>Наименование группы</th>
-                <th>Полное наименование группы</th>
-                <th>Наименование группы вар2</th>
-                <th>Родительская группа</th>
-                <th>Активность</th>
+                <th  style="width: 5%;">pk</th>
+                <th  style="width: 5%;">id</th>
+                <th  style="width: 25%;">Наименование группы</th>
+                <th  style="width: 25%;">Полное наименование группы</th>
+                <th  style="width: 15%;">Наименование группы вар2</th>
+                <th  style="width: 25%;">Родительская группа</th>
+                <th>Актив.</th>
                 <th>Действие</th>
                 <th>Действие</th>
                 <th>Действие</th>
@@ -45,22 +45,39 @@
         <tbody>
             {% for item in dbcAll %}
             <tr> 
-                <td>{{ item.pk          }} </td>
-                <td>{{ item.id_dbg          }} </td>
-                <td>{{ item.name            }} </td>
-                <td>{{ item.nameFull        }} </td>
-                <td>{{ item.name2           }} </td>
-                <td>{{ item.id_parent       }} </td>
-                <td>{{ item.is_active       }} </td>
-                {% comment %} <td><input type="radio" value="man" name="table_dbg"/> </td> {% endcomment %}
-                <td><input type="radio" value={{item.pk}} name="radioSwitch"/> </td>
-                <td><button type="submit" name="buttonSave" value=8 >Записать </button> </td>
-                <td><button type="submit" name="buttonDelete" value=8 >Удалить </button> </td>
+                {% if flag_edit and item.pk == pk_group %}
+                            <td  style="width: 5%;">{{ item.pk      }} </td>
+                            <td  style="width: 5%;">{{ item.id_dbg      }} </td>
+                            <td  style="width: 25%;"><input type="text" name="itemName"      value= {{ item.name        }} > </td>
+                            <td  style="width: 25%;"><input type="text" name="itemNameFull"  value= {{ item.nameFull    }} > </td>
+                            <td  style="width: 15%;"><input type="text" name="itemName2"     value= {{ item.name2       }} > </td>
+                            <td  style="width: 25%;"><input type="text" name="itemParentId"  value= {{ item.id_parent   }} > </td>
+                            <td  style="width: 25%;"><input type="text" name="itemIsActive"  value= {{ item.is_active   }} > </td> 
+                            <td><button type="submit" value={{item.pk}} name="buttonOffEdit" >ВЫКЛ.Редакт. </button> </td>
+                            <td><button type="submit" value={{item.pk}} name="buttonSave" >Записать </button> </td>
+                            <td></td> 
+                               
+                {% else %}
+                    <td style="width: 5%;">{{ item.pk              }} </td>
+                    <td style="width: 5%;">{{ item.id_dbg          }} </td>
+                    <td style="width: 25%;">{{ item.name            }} </td>
+                    <td style="width: 25%;">{{ item.nameFull        }} </td>
+                    <td style="width: 15%;">{{ item.name2           }} </td>
+                    <td style="width: 25%;">{{ item.id_parent       }} </td>
+                    <td>{{ item.is_active       }} </td>
+                    <td><button type="submit" value={{item.pk}} name="buttonOnEdit" >ВКЛ.Редакт. </button> </td>
+                    <td></td>
+                    <td><button type="submit" value={{item.pk}} name="buttonDelete" >Удалить </button> </td>                                     
+                {% endif %}
+                    
+
+
+               
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <button type="submit">Изменить выбранную группу</button>
+    {% comment %} <button type="submit">Изменить выбранную группу</button> {% endcomment %}
 </form>
 <form method="post"> 
     {% csrf_token %}
@@ -91,8 +108,8 @@
             </tbody>
         </table>
         <button type="submit" name="buttonCreate" value=8>Добавить Новая группа + Записать </button>
-        <button type="submit" name="buttonSave" value=8 >Записать </button>
-        <button type="submit" name="buttonDelete" value=8 >Удалить </button>
+        {% comment %} <button type="submit" name="buttonSave" value=8 >Записать </button>
+        <button type="submit" name="buttonDelete" value=8 >Удалить </button> {% endcomment %}
 </form>
 <h2> {{ name}} </h2>
     {% comment %} <form method="post"> 
